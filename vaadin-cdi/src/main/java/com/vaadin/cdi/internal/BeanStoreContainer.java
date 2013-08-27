@@ -55,7 +55,9 @@ public class BeanStoreContainer implements Serializable {
         }
 
         UIBeanStore beanStore = new UIBeanStore();
-        beanStores.put(uiId, beanStore);
+        if( !ui.getBeanClass().isAnnotationPresent(CDIUI.class) ) {
+            beanStores.put(uiId, beanStore);
+        }
         return beanStore;
     }
 
